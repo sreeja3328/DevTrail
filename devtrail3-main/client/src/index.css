@@ -1,0 +1,99 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-sans: 'Inter', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  /* DevTrail Bright Theme Palette */
+  --background: 48 100% 97%;
+  --foreground: 220 39% 18%;
+  
+  --card: 0 0% 100%;
+  --card-foreground: 220 39% 18%;
+  
+  --popover: 0 0% 100%;
+  --popover-foreground: 220 39% 18%;
+  
+  --primary: 24 96% 54%;
+  --primary-foreground: 0 0% 100%;
+  
+  --secondary: 194 90% 93%;
+  --secondary-foreground: 220 39% 18%;
+  
+  --muted: 44 100% 94%;
+  --muted-foreground: 220 18% 40%;
+  
+  --accent: 152 65% 90%;
+  --accent-foreground: 220 39% 18%;
+  
+  --destructive: 0 63% 31%;
+  --destructive-foreground: 210 40% 98%;
+  
+  --border: 33 66% 84%;
+  --input: 33 66% 84%;
+  --ring: 24 96% 54%;
+  
+  --radius: 0.75rem;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground font-sans antialiased selection:bg-primary/30;
+    background-image: radial-gradient(circle at 0% 0%, hsl(194 100% 90% / 0.55), transparent 38%),
+      radial-gradient(circle at 100% 100%, hsl(39 100% 80% / 0.45), transparent 42%);
+    background-attachment: fixed;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-bold tracking-tight text-foreground;
+  }
+}
+
+@layer utilities {
+  .glass-card {
+    @apply bg-card/50 backdrop-blur-xl border border-white/5 shadow-xl;
+  }
+  
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary via-amber-500 to-orange-500;
+  }
+
+  .text-gradient-primary {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary via-orange-500 to-amber-400;
+  }
+
+  .animate-in {
+    animation: animateIn 0.5s ease-out forwards;
+  }
+}
+
+@keyframes animateIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-primary/50 rounded-full hover:bg-primary/70 transition-colors;
+}
